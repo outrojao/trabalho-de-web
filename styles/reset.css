@@ -1,27 +1,19 @@
-/* ================================
-   RESET CSS BÁSICO
-   ================================ */
-
-/* Remove margens, paddings e bordas padrão */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Remove estilos padrão de listas */
 ul,
 ol {
   list-style: none;
 }
 
-/* Remove sublinhado e cor padrão de links */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Remove formatações padrão de títulos e parágrafos */
 h1,
 h2,
 h3,
@@ -33,14 +25,12 @@ p {
   font-weight: normal;
 }
 
-/* Define comportamento uniforme para imagens */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Remove borda padrão de inputs, buttons, etc. */
 button,
 input,
 textarea {
@@ -49,7 +39,6 @@ textarea {
   font-family: inherit;
 }
 
-/* Garante que o HTML ocupe toda a altura da tela */
 html,
 body {
   height: 100%;
