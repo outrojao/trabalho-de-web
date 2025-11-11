@@ -1,0 +1,27 @@
+[
+  {
+    "nome": "Camiseta",
+    "preco": 50.0,
+    "imagem": "assets/camiseta.jpg"
+  },
+  {
+    "nome": "Calça",
+    "preco": 120.0,
+    "imagem": "assets/calca.jpeg"
+  },
+  {
+    "nome": "Bermuda",
+    "preco": 150.0,
+    "imagem": "assets/bermuda.jpg"
+  },
+  {
+    "nome": "Moletom",
+    "preco": 80.0,
+    "imagem": "assets/moletom.jpg"
+  },
+  {
+    "nome": "Gorro",
+    "preco": 40.0,
+    "imagem": "assets/gorro.jpg"
+  }
+]
