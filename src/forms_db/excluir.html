@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../assets/icon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="../styles/dark.css" />
+    <script src="../js/muda_tema.js"></script>
+    <script src="../js/carrega_produtos.js" defer></script>
+    <title>Excluir produto</title>
+  </head>
+  <body>
+    <header id="cabecalho_forms">
+      <h1>Excluir um produto</h1>
+    </header>
+    <form action="../php/excluir_action.php" method="POST">
+      <label for="id_produto">Produto que será excluído:</label><br />
+      <select name="produto" id="id_produto"></select>
+      <button type="submit">Enviar</button>
+    </form>
+  </body>
+</html>
