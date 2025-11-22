@@ -1,6 +1,12 @@
+# No Fedora, antes de rodar o docker:
+# sudo setenforce 0
+# docker-compose up -d
+
+version: "3.9"
+
 services:
   php-apache:
-    image: php:8.2-apache
+    build: .
     container_name: php-apache
     volumes:
       - ./src:/var/www/html
@@ -8,23 +14,18 @@ services:
       - "8080:80"
     depends_on:
       - db
-    environment:
-      - APACHE_DOCUMENT_ROOT=/var/www/html
-    command: >
-      bash -c "docker-php-ext-install mysqli pdo pdo_mysql &&
-               apache2-foreground"
 
   db:
-    image: mysql:8
+    image: mysql:8.0.33
     container_name: mysql-db
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: meu_db
-      MYSQL_USER: root
-      MYSQL_PASSWORD: root
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: senha
     volumes:
-      - ./mysql:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
@@ -36,3 +37,9 @@ services:
       PMA_HOST: db
       PMA_USER: root
       PMA_PASSWORD: root
+      PMA_ARBITRARY: 1
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
