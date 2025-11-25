@@ -1,36 +1,47 @@
 # No Fedora, antes de rodar o docker:
 # sudo setenforce 0
 # docker-compose up -d
-
-version: "3.9"
+# Terminal 1
+#ssh -R meusite:80:localhost:8080 serveo.net
+# Terminal 2
+#ssh -R meupma:80:localhost:8081 serveo.net
 
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "10000:80" # Render usa porta 10000
+  php-apache:
+    build: .
+    container_name: php-apache
     volumes:
       - ./src:/var/www/html
+    ports:
+      - "8080:80"
     depends_on:
       - db
-    environment:
-      - MYSQL_HOST=db
-      - MYSQL_DATABASE=meu_db
-      - MYSQL_USER=usuario
-      - MYSQL_PASSWORD=senha
 
   db:
-    image: mysql:8.0
+    image: mysql:8.0.33
+    container_name: mysql-db
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=meu_db
-      - MYSQL_USER=usuario
-      - MYSQL_PASSWORD=senha
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: meu_db
+      MYSQL_USER: usuario
+      MYSQL_PASSWORD: senha
     volumes:
       - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: pma
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+      PMA_ARBITRARY: 1
+    depends_on:
+      - db
 
 volumes:
   mysql_data:
